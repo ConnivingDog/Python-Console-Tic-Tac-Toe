@@ -18,22 +18,22 @@ class Board():
         self.Draw()
     
     def Draw(self):
-        for i in range(self.row):
-            self.DrawHorizontal(i)
-            self.DrawVertical(i)
-        self.DrawHorizontal(i)
+        self.DrawHorizontal()
+        self.DrawVertical()
         print('\n')
 
-    def DrawHorizontal(self, i):
-        print('+---' * self.col, end="")
+    def DrawHorizontal(self):
+        print('+---' * self.col, end='')
         print('+')
 
-    def DrawVertical(self, i):
-        print('| {} '.format( * self.col, self.BoardPieces[i]), end="")
-        print('|')
-
-    def DisplayPiece(self, i):
-        return self.BoardPieces
+    def DrawVertical(self):
+        end = 2
+        for i in range(self.col * self.row):
+            print('| {} '.format(self.BoardPieces[i]), end='')
+            if i == end:
+                print('|')
+                self.DrawHorizontal()
+                end+=3
 
     def PlacePiece(piece):
         BoardPieces[piece - 1] = 'x'
